@@ -22,3 +22,23 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# Sweater Weather
+
+Sweater Weather is a Mod 3 Back-End project focused on creating and consuming multiple APIs and demonstrates a strong understanding of MVC principles. All endpoints return JSON data.
+
+# Setup
+
+### To get this repo running locally:
+
+  * Clone down this repo using ruby 2.4.1
+  * `bundle`
+  * `rake db:{create,migrate}`
+
+### To get this repo running in production:
+  * Visit https://sweater-weather-lkenney.herokuapp.com/ 
+
+ ## Endpoints
+
+ ## Testing
+  * Testing has xx% coverage
