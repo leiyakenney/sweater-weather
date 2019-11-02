@@ -1,0 +1,18 @@
+services:
+- postgresql
+before_script:
+- psql -c 'create database shredshare_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+language: ruby
+rvm:
+- 2.4.1
+script:
+- bundle exec rails db:reset db:setup db:migrate RAINS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: KxEkg5wnrx6crNggYnSL+i3Ez1kLcAmYHlf3WEvtzoYY5E4PM5bzDEwgLP8gi9WV5FbkAtScNYUWM1J/qsnFjox5W6BBLMdFowV+ct6bmQm/pOmE52F4YrYLc6w0r1htV65ZZuQtOnWlHzd2E/1JV7ztQwTFGiiN6cG8esVldecZv9AKdc5fD6kAS8iszWykmAG1g5sygLiTbHs65dGQ9V/z0pz9iVeZXEb+9Wo6+HMz8phi+RAvO8VlbbPH5cjZT8BT1JHQ6Qxbvw0ejfwIYZFUmVDS+K23oMcpqgR7GQrgMK9SfaUDZl7dEZn6V2v7Fdj2O5H/eFOzcFZxZ4NOUpUksGWEIF0KCN2+KwHubvUbLumQXgk4MrNIPYX+F4HuvOhci73rMud8w2xhdAf7oQ4fqdRgCT1w8x8CpAdqik9exTSO9oewFRUX0UC6uB+ycCYtPuJo2byyl6we+Ie6bL9hqZ7mSnr26LMv+AmWQWAZ2jQCRCVJWlZs5hN1eEtbGfYgPs/ZEeRlxJdHjGkJUj7xoHTEHeRSeBrNzKe+IIcdkABDZqWJGBEbMQu+IoWfKJLt3KtlUXNgtaej4YG29qBaR60xPgJ/t4Q5wJI9Ax6st6EGtlDyQ8jXEsuWwNm0eEtOcVd+f6c6dwYDE+e+tkwGxGUKa8UeK9r9cYLpfkQ=
+  app: sweater-weather-lkenney
+  on:
+    repo: leiyakenney/sweater-weather
