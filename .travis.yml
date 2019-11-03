@@ -3,6 +3,9 @@ services:
 language: ruby
 rvm:
 - 2.4.1
+before_script:
+- psql -c 'create database sweaterweather_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
 script:
 - bundle install
 - bundle exec rails db:reset db:setup db:migrate RAINS_ENV=test
