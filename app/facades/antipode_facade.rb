@@ -11,6 +11,10 @@ class AntipodeFacade
   end
 
   def antipode_coordinates
-    data = amypode_service.get_antipode_data
+    data = amypode_service.coordinates
+  end
+
+  def antipode_city
+    amypode_service.city_name
   end
 end
