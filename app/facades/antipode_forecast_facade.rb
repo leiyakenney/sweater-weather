@@ -12,6 +12,5 @@ class AntipodeForecastFacade
 
   def create_forecast
     data = darksky_service.get_forecast_data
-    binding.pry
   end
 end
