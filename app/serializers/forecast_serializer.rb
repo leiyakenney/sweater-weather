@@ -1,8 +1,4 @@
 class ForecastSerializer
-  attr_reader :forecast 
-
-  def initialize(forecast)
-    @forecast = forecast
-  end
-
+  include FastJsonapi::ObjectSerializer
+  
 end
