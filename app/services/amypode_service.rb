@@ -14,10 +14,6 @@ class AmypodeService
     get_antipode_data[:data][:attributes]
   end
 
-  def city_name
-    binding.pry
-  end
-
   private
   def conn
     conn = Faraday.new(url: "http://amypode.herokuapp.com") do |f|
