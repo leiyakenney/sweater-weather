@@ -6,7 +6,7 @@ class Api::V1::AntipodeController < ApplicationController
     antipode_coordinates = AntipodeFacade.new(coordinates).antipode_coordinates
     antipode_location = ReverseLocationFacade.new(antipode_coordinates).antipode_city
     weather = AntipodeForecastFacade.new(antipode_coordinates).create_forecast
-    forecast = Antipode.new(weather, search_location, antipode_coordinates)
+    forecast = Antipode.new(weather, search_location, antipode_location)
     render json: AntipodeSerializer.new(forecast)
   end
 end
