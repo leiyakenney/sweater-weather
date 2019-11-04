@@ -9,7 +9,6 @@ class ReverseLocationFacade
   end
 
   def antipode_city
-    binding.pry
     google_reverse_service.city_name
   end
 end

@@ -5,7 +5,6 @@ class GoogleReverseGeocodeService
   end
 
   def get_location_data
-    binding.pry
     response = conn.get("json") do |req|
       req.params[:latlng] = "#{@lat},#{@long}"
     end
@@ -13,7 +12,7 @@ class GoogleReverseGeocodeService
   end
 
   def city_name
-    get_location_data[:results][0][:formatted_address]
+    get_location_data[:results][0][:address_components][2][:long_name]
   end
 
   private
