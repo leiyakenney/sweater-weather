@@ -5,7 +5,6 @@ class DarkskyAmypodeService
   end
 
   def get_forecast_data
-    binding.pry
     response = conn.get("#{@lat},#{@long}")
     JSON.parse(response.body, symbolize_names: true)
   end
