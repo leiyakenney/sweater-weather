@@ -1,13 +1,13 @@
 class ForecastFacade
   attr_reader :id
 
-  def initialize(coordinates)
+  def initialize(antipode_coordinates)
     @id = rand(0..99)
-    @coordinates = coordinates
+    @anti_coords = antipode_coordinates
   end
 
   def darksky_service
-    DarkskyService.new(@coordinates)
+    DarkskyService.new(@anti_coords)
   end
 
   def create_forecast
