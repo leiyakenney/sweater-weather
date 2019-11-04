@@ -6,11 +6,11 @@ class AntipodeFacade
     @coordinates = coordinates
   end
 
-  def darksky_service
-    DarkskyService.new(@coordinates)
+  def amypode_service
+    AmypodeService.new(@coordinates)
   end
 
-  def create_forecast
-    data = darksky_service.get_forecast_data
+  def antipode_coordinates
+    data = amypode_service.get_antipode_data
   end
 end
