@@ -11,6 +11,10 @@ class GoogleGeocodeService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def city_name
+    get_location_data[:results][0][:formatted_address]
+  end
+
   private
   def conn
     Faraday.new(
