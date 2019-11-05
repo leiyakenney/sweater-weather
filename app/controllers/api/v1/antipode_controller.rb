@@ -1,12 +1,7 @@
 class Api::V1::AntipodeController < ApplicationController
 
   def show
-    coordinates = LocationFacade.new(params[:location]).coordinates
-    search_location = LocationFacade.new(params[:location]).search_city
-    antipode_coordinates = AntipodeFacade.new(coordinates).antipode_coordinates
-    antipode_location = ReverseLocationFacade.new(antipode_coordinates).antipode_city
-    weather = AntipodeForecastFacade.new(antipode_coordinates).create_forecast
-    forecast = Antipode.new(weather, search_location, antipode_location)
-    render json: AntipodeSerializer.new(forecast)
+    facade = AntipodeFacade.new(params[:location])
+    render json: AntipodeSerializer.new(facade)
   end
 end

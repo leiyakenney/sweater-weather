@@ -1,18 +1,16 @@
-class GoogleReverseGeocodeService
-  def initialize(lat, long)
-    @lat = lat
-    @long = long
-  end
-
-  def get_location_data
+class GoogleService
+  def location_data(location)
     response = conn.get("json") do |req|
-      req.params[:latlng] = "#{@lat},#{@long}"
+      req.params[:address] = location
     end
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def city_name
-    get_location_data[:results][0][:address_components][2][:long_name]
+  def city_data(latlong)
+    response = conn.get("json") do |req|
+      req.params[:latlng] = latlong
+    end
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   private

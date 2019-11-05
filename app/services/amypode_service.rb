@@ -1,7 +1,7 @@
 class AmypodeService
-  def initialize(coordinates)
-    @lat = coordinates[:lat]
-    @lng = coordinates[:lng]
+  def initialize(latlong)
+    @lat = latlong[:lat]
+    @lng = latlong[:lng]
   end
 
   def get_antipode_data
