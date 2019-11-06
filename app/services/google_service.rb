@@ -6,13 +6,6 @@ class GoogleService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def city_data(latlong)
-    response = conn.get("json") do |req|
-      req.params[:latlng] = latlong
-    end
-    JSON.parse(response.body, symbolize_names: true)
-  end
-
   private
   def conn
     Faraday.new(
