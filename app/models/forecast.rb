@@ -32,7 +32,7 @@ class Forecast
         icon: hour[:icon],
         temp: hour[:temperature],
         summary: hour[:summary],
-        time: Time.at(hour[:time]).strftime("%I%p")
+        time: Time.at(hour[:time]).strftime("%l%p")
     }
     end
     @daily_weather = weather[:daily][:data].first(5).map do |day|
@@ -49,6 +49,6 @@ class Forecast
 
   def format_time(weather)
     time = Time.at(@currently[:time])
-    time.strftime("%I:%M %p, %m/%d")
+    time.strftime("%l:%M %p, %m/%d")
   end
 end
