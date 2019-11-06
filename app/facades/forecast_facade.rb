@@ -7,7 +7,7 @@ class ForecastFacade
   end
 
   def darksky_service
-    DarkskyService.new(@coordinates)
+    DarkskyService.new(@coordinates[:lat], @coordinates[:lng])
   end
 
   def create_forecast

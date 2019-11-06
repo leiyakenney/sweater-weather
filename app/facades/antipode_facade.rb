@@ -28,8 +28,9 @@ class AntipodeFacade
   end
 
   def antipode_darksky
-    data = DarkskyAmypodeService.new(antipode_coords).get_forecast_data
+    data = DarkskyService.new(antipode_coords[:lat], antipode_coords[:long]).get_forecast_data
     hour_one = data[:hourly][:data].first
+    # create PORO instead of the hash 
     hash = {}
     hash[:summary] = hour_one[:summary]
     hash[:current_temperature] = hour_one[:temperature].round

@@ -1,7 +1,7 @@
 class DarkskyService
-  def initialize(coordinates)
-    @lat = coordinates[:lat]
-    @long = coordinates[:lng]
+  def initialize(lat, long)
+    @lat = lat
+    @long = long
   end
 
   def get_forecast_data
