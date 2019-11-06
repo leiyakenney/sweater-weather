@@ -4,11 +4,11 @@ class LocationFacade
   end
 
   def google_service
-    GoogleGeocodeService.new(@location)
+    GoogleService.new
   end
 
   def coordinates
-    data = google_service.get_location_data
+    data = google_service.location_data(@location)
     data[:results][0][:geometry][:location]
   end
 
