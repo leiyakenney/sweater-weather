@@ -1,13 +1,16 @@
 require 'rails_helper'
 
-describe "Google Geocode API" do
-  it "sends a list of forecasts" do
-    create_list(:forecast, 2)
+describe "Forecast Endpoint" do
+  it "shows an endpoint with current weather, hourly weather, and daily weather" do
+    get '/api/v1/forecast?location=denver,co'
 
-    get '/api/v1/forecast'
+    forecast = JSON.parse(response.body, symbolize_names: true)
 
-    expect(response).to be_successful
-
-    forecast = JSON.parse(response.body)
+    expect(response.content_type).to eq('application/json')
+    expect(forecast.class).to eq(Hash)
+    expect(forecast[:data][:attributes].count).to eq(12)
+    expect(forecast[:data][:attributes][:hourly_weather].count).to eq(8)
+    expect(forecast[:data][:attributes][:daily_weather].count).to eq(5)
+    expect(forecast[:data][:type]).to eq('forecast')
   end
 end
