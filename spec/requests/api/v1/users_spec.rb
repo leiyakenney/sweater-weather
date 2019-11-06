@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "users spec", type: :request do
+describe "users spec" do
   describe "user creation" do
     it "can create account and return an API key" do
 
